@@ -1,0 +1,13 @@
+<section class="h-fullscreenMinusHeader grid place-items-center max-w-6xl mx-auto">
+  <div class="container grid gap-6">
+    <h3 class="text-4xl mb-6 font-accent font-bold text-center">Featured Blog Posts</h3>
+    <ul class="flex gap-6">
+      {% for post in featured_posts %}
+      {% include "blog_card.html" %}
+      {% endfor %}
+    </ul>
+    <div class="flex justify-center items-center h-12">
+      <a href="/posts" class="link">See more posts</a>
+    </div>
+  </div>
+</section>

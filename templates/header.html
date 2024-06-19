@@ -1,0 +1,18 @@
+<div class="navbar bg-base-100">
+  <div class="flex-1">
+    <h1><a class="btn btn-ghost hover:bg-transparent text-xl" href="/">eerik.dev</a></h1>
+  </div>
+  <nav>
+    <ul class="hidden sm:flex menu menu-horizontal font-mono font-bold">
+      <li><button class="hover:bg-transparent focus:bg-transparent" hx-get="/project/0" hx-target="#content" hx-swap="innerHTML">Projects</button></li>
+      <li><button class="hover:bg-transparent focus:bg-transparent" hx-get="/featured_posts" hx-target="#content" hx-swap="innerHTML">Blog</button></li>
+      <li><button class="hover:bg-transparent focus:bg-transparent">About</button></li>
+      <li><button class="hover:bg-transparent focus:bg-transparent">Contact</button></li>
+    </ul>
+  </nav>
+  <div class="sm:hidden menu menu-horizontal">
+    <button class="btn btn-ghost">
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" class="inline-block w-5 h-5 stroke-current"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
+    </button>
+  </div>
+</div>

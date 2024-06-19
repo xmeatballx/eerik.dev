@@ -1,0 +1,11 @@
+<li class="card w-full shadow-lg hover:scale-105 duration-500 cursor-pointer overflow-hidden">
+  <a href="/posts/{{post.slug}}" class="h-full">
+    <figure class="overflow-hidden h-1/2">
+      <img src={{post.featured_image}} class="hover:scale-125 transition duration-500 h-full" />
+    </figure>
+    <div class="card-body bg-base-200 h-full">
+      <h4 class="card-title font-mono">{{post.title}}</h4>
+      <p class="font-accent">{{post.excerpt}}</p>
+    </div>
+  </a>
+</li>

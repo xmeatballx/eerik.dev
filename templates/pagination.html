@@ -1,0 +1,14 @@
+<nav class="grid place-items-center font-accent">
+  <ol class="join mx-auto relative">
+    {% for project in projects %}
+    <li hx-target="#project">
+      {% if loop.index == selected_index+1 %}
+      <button class="join-item btn btn-active rounded-b-none bg-neutral hover:bg-neutral border-none">{{ loop.index }}</button>
+      {% else %}
+      <button class="join-item btn bg-opacity-10 border-none" hx-get="/project/{{ loop.index-1 }}" hx-swap="outerHTML swap:.1s show:top">{{ loop.index
+        }}</button>
+      {% endif %}
+    </li>
+    {% endfor %}
+  </ol>
+</nav>

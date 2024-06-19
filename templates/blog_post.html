@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="custom">
+
+<head>
+  {% include "head.html" %}
+  <link href="/assets/css/prism.css" rel="stylesheet" />
+</head>
+
+<body>
+  {% include "header.html" %}
+  <article class="prose prose-xl mx-auto mb-24 font-accent">
+    <div class="not-prose text-sm breadcrumbs font-mono">
+      <ul>
+        <li><a href="/posts" class="link">Blog posts</a></li>
+        <li>{{ post.title }}</li>
+      </ul>
+    </div>
+    <img src={{ post.featured_image }} class="max-h-96 w-full mt-6 object-cover" />
+    {{ html|safe}}
+  </article>
+  {% include "footer.html" %}
+  <script src="/assets/js/prism.js"></script>
+</body>
+
+</html>

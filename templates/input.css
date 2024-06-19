@@ -1,0 +1,65 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html {
+  //--glass-reflex-opacity: 0%;
+  --tw-prose-pre-bg: #1e1e2e;
+}
+
+pre[class*=language-] {
+  background-color: #1c1c2c !important;
+  border: none !important;
+  box-shadow: none !important;
+  font-size: .8em !important;
+  font-family: 'JetBrains Mono';
+}
+
+code {
+  text-shadow: none !important;
+}
+
+.fade.htmx-added {
+  opacity: 0;
+}
+
+.fade.htmx-swapping {
+  opacity: 0;
+}
+
+.fade {
+  opacity: 1;
+  transition: opacity .25s;
+}
+
+#project {
+  transition: all .25s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+#project img, #project video {
+  transition: all .1s cubic-bezier(0.4, 0, 0.2, 1);
+  opacity: 1;
+}
+
+
+#project .fade-in, #project figcaption {
+  transition: all .25s cubic-bezier(0.4, 0, 0.2, 1);
+  opacity: 1;
+}
+
+#project.htmx-swapping .fade-in {
+  opacity: 0;
+}
+
+#project.htmx-swapping img, #project.htmx-swapping video {
+  opacity: 0.75;
+}
+
+#project.htmx-swapping figcaption {
+  opacity: 0.2;
+}
+
+#project.htmx-added .fade-in {
+  opacity: 0;
+}
+

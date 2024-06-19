@@ -1,0 +1,36 @@
+<section class="hero h-fullscreenMinusHeader" id="hero">
+  <div class="hero-content container max-w-6xl flex justify-between -translate-y-[60px]">
+    <div class="max-w-md">
+      <h1 class="text-6xl font-accent font-bold">Hello there<span class="text-5xl ml-2 pb-1">🤓</span></h1>
+      <p class="py-6 text-2xl leading-8 font-accent">Provident cupiditate voluptatem et in. Quaerat fugiat ut assumenda excepturi exercitationem quasi.
+        In deleniti eaque aut repudiandae et a id nisi.</p>
+      <!-- <button class="btn btn-primary">Get Started</button> -->
+    </div>
+    <div class="mockup-code font-mono w-1/2 bg-base-300 bg-opacity-50 shadow-md py-4">
+      <pre data-prefix="$" class="text-left mb-1"><span class="text-success">ls</span>&nbsp;<span class="text-accent">projects</span></pre>
+      <pre data-prefix="" class="text-left flex mb-2">
+        <ul class="grid grid-cols-3 gap-x-6 w-full">
+          {% for project in projects %}
+          <li class="flex">
+            <button class="link text-info-content" hx-get="/project/{{ loop.index-1 }}" hx-target="#content"
+              hx-swap="innerHtml">{{ project.name }}</button>
+          </li>
+          {% endfor %}
+        </ul>
+      </pre>
+      <pre data-prefix="$" class="text-left mb-0.5"><span class="text-success">ls</span>&nbsp;<span class="text-accent">skills</span> --technical</pre>
+      <pre data-prefix="" class="text-left flex">
+        <div class="hidden text-warning text-neutral-content text-primary text-rosewater text-accent text-secondary"></div>
+        <ul class="grid grid-cols-3 gap-x-6 w-full">
+          {% for technology in technologies %}
+            {% if technology.featured %}
+              <li class="flex">
+                <span class="font-bold"><i class="{{ technology.fa_classname }} mr-2"></i>{{ technology.name }}</span>
+              </li>
+            {% endif %}
+          {% endfor %}
+        </ul>
+      </pre>
+    </div>
+  </div>
+</section>
