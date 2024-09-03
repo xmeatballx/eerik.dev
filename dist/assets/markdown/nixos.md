@@ -1,7 +1,5 @@
 # How I use NixOS as a daily driver
 
-Status: Rough Draft
-
 # Laptop
 
 ## TLP
