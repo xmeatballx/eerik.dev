@@ -1,11 +1,9 @@
 use askama_axum::Template;
 use axum::{
-    extract::Path, extract::State, http::StatusCode, response::{Html, IntoResponse, Response}, routing::get, Json, Router
+    extract::Path, extract::State, http::StatusCode, response::{Html, IntoResponse, Response}, routing::get, Router
 };
-use axum_extra::extract::OptionalQuery;
 use tracing_subscriber::{layer::SubscriberExt, util::SubscriberInitExt};
 use std::sync::Arc;
-use serde::Deserialize;
 mod content;
 
 type ProjectsState = Arc<&'static[&'static content::project::Project]>;

@@ -2,7 +2,7 @@
   <div class="hero-content container max-w-6xl flex justify-between -translate-y-[60px]">
     <div class="max-w-md">
       <h1 class="text-6xl font-accent font-bold">Hello there<span class="text-5xl ml-2 pb-1">🤓</span></h1>
-      <p class="py-6 text-2xl leading-8 font-accent">I'm Erik and I love making things on the web. On this site you can find info and links to my <a href="/projects">projects</a> and some thoughts of mine on my <a href="/blog">blog</a></p>
+      <p class="py-6 text-2xl leading-8 font-accent">I'm Erik and I love making things on the web. On this site you can find some <a href="/projects" class="text-info-content">projects</a> I made and read some things I wrote on my <a href="/blog" class="text-info-content">blog</a>.</p>
       <!-- <button class="btn btn-primary">Get Started</button> -->
     </div>
     <div class="mockup-code font-mono w-1/2 bg-base-300 bg-opacity-50 shadow-md py-4">
@@ -19,7 +19,7 @@
       <pre data-prefix="$" class="text-left mb-0.5"><span class="text-success">ls</span>&nbsp;<span class="text-accent">skills</span> --technical</pre>
       <pre data-prefix="" class="text-left flex">
         <div class="hidden text-warning text-neutral-content text-primary text-rosewater text-accent text-secondary"></div>
-        <ul class="grid grid-cols-3 gap-x-6 w-full">
+        <ul class="grid grid-cols-3 gap-x-6 gap-y-1 w-full mt-1">
           {% for technology in technologies %}
             {% if technology.featured %}
               <li class="flex">

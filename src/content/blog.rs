@@ -16,7 +16,7 @@ pub static BLOG_POSTS: &'static[&'static BlogPost] = &[
         excerpt: "After a month of Reddit suggesting posts from a community called Homelab based on my other interests, I gave in to curiosity...",
         slug: "homelab",
         markdown_path: "homelab.md",
-        published_date: "11/11/11",
+        published_date: "7/20/24",
         featured_image: "/assets/images/homelab.png",
         featured: true
     },
@@ -25,7 +25,7 @@ pub static BLOG_POSTS: &'static[&'static BlogPost] = &[
         excerpt: "Notion is a powerful knowledge management system and productivity tool. I'll show you how to encorporate your Notion data in a basic web app...",
         slug: "notion",
         markdown_path: "notion_integration/notion_integration.md",
-        published_date: "11/11/11",
+        published_date: "3/14/24",
         featured_image: "/assets/images/notion_integration.png",
         featured: true
     },
@@ -34,7 +34,7 @@ pub static BLOG_POSTS: &'static[&'static BlogPost] = &[
         excerpt: "As a developer with a background in music composition, I had an idea for a web app called ColorChords, which translated musical harmonic ratios into color space...",
         slug: "colorchords",
         markdown_path: "colorchords.md",
-        published_date: "11/11/11",
+        published_date: "11/11/23",
         featured_image: "/assets/images/colorchords.png",
         featured: true
     },
