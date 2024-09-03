@@ -1905,6 +1905,16 @@ html {
   grid-row-start: 1;
 }
 
+.hero-content {
+  z-index: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  max-width: 80rem;
+  gap: 1rem;
+  padding: 1rem;
+}
+
 .join {
   display: inline-flex;
   align-items: stretch;
