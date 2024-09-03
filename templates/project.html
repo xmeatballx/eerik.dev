@@ -1,5 +1,5 @@
 {% set project = projects[selected_index] %}
-<section class="container mx-auto max-w-6xl relative h-fullscreenMinusHeader grid place-items-center py-8 slide-in"
+<section class="container mx-auto max-w-6xl relative px-6 md:px-0 md:h-fullscreenMinusHeader grid place-items-center py-8 slide-in"
   id="project">
   <figure class="carousel w-full flex-col bg-opacity-50 relative">
     {% if (project.media_format.is_image()) %}
@@ -9,9 +9,9 @@
     <video class="aspect-[16/8] object-fill" src="{{ project.media_url }}" muted loop controls playsinline
       controlslist="nodownload"></video>
     {% endif %}
-    <figcaption class="grid gap-2 pt-8 pb-4 relative">
+    <figcaption class="flex flex-col gap-2 pt-8 pb-4 relative">
       <div class="flex">
-        <h3 class="card-title fade-in font-accent text-2xl mr-2">{{ project.name }}</h3>
+        <h3 class="card-title fade-in font-accent text-lg md:text-2xl mr-2">{{ project.name }}</h3>
         <ul class="flex gap-3 p-1 bg-neutral bg-opacity-70 rounded-xl">
           {% if (project.github_url != "hidden") %}
           <li class="flex items-center"><a href="{{ project.github_url }}" target="_blank"><i class="fa-brands fa-github fa-lg"></i></a></li>
@@ -22,10 +22,10 @@
           {% endif %}
         </ul>
       </div>
-      <p class="mt-0 mb-2 fade-in text-lg font-accent">{{ project.description }}</p>
-      <ul class="flex gap-1 w-full fade-in font-mono">
+      <p class="mt-0 mb-2 fade-in text-base md:text-lg font-accent">{{ project.description }}</p>
+      <ul class="flex gap-1 flex-wrap md:flex-nowrap md:w-full fade-in font-mono">
         {% for technology in project.tech %}
-        <li class="bg-neutral shadow-lg rounded-md py-1 px-2">
+        <li class="bg-neutral shadow-lg rounded-md py-1 px-2 w-max">
           <i class="{{ technology.fa_classname}}"></i>
           <span class="font-medium">{{ technology.name }}</span>
         </li>
