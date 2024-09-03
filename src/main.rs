@@ -1,9 +1,14 @@
 use askama_axum::Template;
 use axum::{
-    extract::Path, http::StatusCode, response::{Html, IntoResponse, Response}, routing::get, Json, Router
+    extract::Path, extract::State, http::StatusCode, response::{Html, IntoResponse, Response}, routing::get, Json, Router
 };
+use axum_extra::extract::OptionalQuery;
 use tracing_subscriber::{layer::SubscriberExt, util::SubscriberInitExt};
+use std::sync::Arc;
+use serde::Deserialize;
 mod content;
+
+type ProjectsState = Arc<&'static[&'static content::project::Project]>;
 
 #[tokio::main]
 async fn main() {
@@ -15,15 +20,21 @@ async fn main() {
         .with(tracing_subscriber::fmt::layer())
         .init();
 
+    
+    let projects: ProjectsState = Arc::new(content::project::PROJECTS);
     // build our application with some routes
     let app = Router::new()
         .route("/", get(home))
+        .route("/hero", get(hero))
         .route("/project/:selected_index", get(project))
+        .route("/projects", get(default_projects_page))
+        .route("/projects/:project_name", get(dynamic_projects_page))
+        .route("/blog", get(blog_page))
         .route("/featured_posts", get(featured_blog_posts))
         .route("/posts", get(blog))
         .route("/posts/:slug", get(blog_post))
         .nest_service("/assets", tower_http::services::ServeDir::new("assets"))
-        .with_state(content::project::PROJECTS);
+        .with_state(projects);
 
     // run it
     let listener = tokio::net::TcpListener::bind("127.0.0.1:3000")
@@ -35,6 +46,12 @@ async fn main() {
 
 async fn blog() -> impl IntoResponse {
     let template = content::blog::BlogAllPostsTemplate { posts: &content::blog::BLOG_POSTS };
+    HtmlTemplate(template)
+}
+
+async fn blog_page() -> impl IntoResponse {
+    let featured_posts: Vec<&content::blog::BlogPost> = content::blog::BLOG_POSTS.iter().filter_map(|&p| if p.featured { Some(p) } else { None }).collect();
+    let template = content::blog::BlogPageTemplate { featured_posts };
     HtmlTemplate(template)
 }
 
@@ -51,15 +68,31 @@ async fn blog_post(Path(slug): Path<String>) -> impl IntoResponse {
     HtmlTemplate(template)
 }
 
-async fn home(axum::extract::State(projects): axum::extract::State<content::project::Projects>) -> impl IntoResponse {
+async fn home(State(projects): State<ProjectsState>) -> impl IntoResponse {
     let featured_posts: Vec<&content::blog::BlogPost> = content::blog::BLOG_POSTS.iter().filter_map(|&p| if p.featured { Some(p) } else { None }).collect();
 
     let template = HomeTemplate { projects, selected_index: 0, technologies: content::tech::TECHNOLOGIES.to_array(), featured_posts };
     HtmlTemplate(template)
 }
 
-async fn project(axum::extract::Path(index): axum::extract::Path<String>, axum::extract::State(projects): axum::extract::State<content::project::Projects>) -> impl IntoResponse {
-    let template = content::project::ProjectsTemplate { selected_index: index.parse::<usize>().unwrap().into(), projects };
+async fn hero(State(projects): State<ProjectsState>) -> impl IntoResponse {
+    let template = HeroTemplate { projects, technologies: content::tech::TECHNOLOGIES.to_array() };
+    HtmlTemplate(template)
+}
+
+async fn project(Path(index): Path<usize>, State(projects): State<ProjectsState>) -> impl IntoResponse {
+    let template = content::project::ProjectTemplate { selected_index: index, projects };
+    HtmlTemplate(template)
+}
+
+async fn default_projects_page(State(projects): State<ProjectsState>) -> impl IntoResponse {
+    let template = content::project::ProjectsTemplate { selected_index: 0, projects };
+    HtmlTemplate(template)
+}
+
+async fn dynamic_projects_page( Path(project_name): Path<String>, State(projects): State<ProjectsState>) -> impl IntoResponse {
+    let selected_index = projects.iter().position(|&r| r.name == project_name).unwrap();
+    let template = content::project::ProjectsTemplate { selected_index: selected_index, projects };
     HtmlTemplate(template)
 }
 
@@ -70,6 +103,13 @@ struct HomeTemplate {
     selected_index: usize,
     technologies: [&'static content::tech::Technology; 11],
     featured_posts: Vec<&'static content::blog::BlogPost>
+}
+
+#[derive(Template)]
+#[template(path = "hero.html")]
+struct HeroTemplate {
+    projects: content::project::Projects,
+    technologies: [&'static content::tech::Technology; 11],
 }
 
 struct HtmlTemplate<T>(T);
@@ -89,3 +129,4 @@ where
         }
     }
 }
+

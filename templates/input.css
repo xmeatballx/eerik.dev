@@ -37,7 +37,7 @@ code {
 }
 
 #project img, #project video {
-  transition: all .1s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: opacity .1s cubic-bezier(0.4, 0, 0.2, 1);
   opacity: 1;
 }
 
@@ -63,3 +63,53 @@ code {
   opacity: 0;
 }
 
+/* #content .slide-in {
+  transition: translate 200ms, opacity 200ms;
+  translate: 0px 0px;
+  opacity: 1;
+}
+
+#content.htmx-swapping .slide-in {
+  translate: -100px 0px;
+  opacity: 0;
+}
+
+#content.htmx-added .slide-in {
+  opacity: 1;
+}
+
+#content.htmx-settling .slide-in {
+  translate: 100px 0px;
+  opacity: 0;
+} */
+
+@keyframes fade-in {
+    from { opacity: 0; }
+}
+    
+@keyframes fade-out {
+  to { opacity: 0; }
+}
+    
+@keyframes slide-from-right {
+ from { translate: 90px 0px; }
+}
+
+@keyframes slide-to-left {
+ to { translate: -90px 0px; }
+}
+
+/* define animations for the old and new content */
+::view-transition-old(slide-it) {
+ animation: 180ms cubic-bezier(0.4, 0, 1, 1) both fade-out,
+ 600ms cubic-bezier(0.4, 0, 0.2, 1) both slide-to-left;
+}
+::view-transition-new(slide-it) {
+ animation: 420ms cubic-bezier(0, 0, 0.2, 1) 90ms both fade-in,
+ 600ms cubic-bezier(0.4, 0, 0.2, 1) both slide-from-right;
+}
+
+/* tie the view transition to a given CSS class */
+.slide-in {
+   view-transition-name: slide-it;
+}

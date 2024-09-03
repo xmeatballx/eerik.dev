@@ -13,7 +13,7 @@ pub struct BlogPost {
 pub static BLOG_POSTS: &'static[&'static BlogPost] = &[
     &BlogPost{ 
         title: "Setting up a Homelab",
-        excerpt: "I recently embarked on a journey to create my own homelab server for media management, self-hosting, and virtual machine experiments...",
+        excerpt: "After a month of Reddit suggesting posts from a community called Homelab based on my other interests, I gave in to curiosity...",
         slug: "homelab",
         markdown_path: "homelab.md",
         published_date: "11/11/11",
@@ -21,7 +21,7 @@ pub static BLOG_POSTS: &'static[&'static BlogPost] = &[
         featured: true
     },
     &BlogPost{ 
-        title: "Custom NodeJS notion integration",
+        title: "Custom NodeJS Notion integration",
         excerpt: "Notion is a powerful knowledge management system and productivity tool. I'll show you how to encorporate your Notion data in a basic web app...",
         slug: "notion",
         markdown_path: "notion_integration/notion_integration.md",
@@ -57,5 +57,10 @@ pub struct BlogAllPostsTemplate {
 #[derive(Template)]
 #[template(path = "featured_blogs.html")]
 pub struct FeaturedBlogsTemplate { 
+    pub featured_posts: Vec<&'static BlogPost>
+}
+#[derive(Template)]
+#[template(path = "blog.html")]
+pub struct BlogPageTemplate { 
     pub featured_posts: Vec<&'static BlogPost>
 }

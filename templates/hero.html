@@ -1,9 +1,8 @@
-<section class="hero h-fullscreenMinusHeader" id="hero">
+<section class="hero h-fullscreenMinusHeader slide-in" id="hero">
   <div class="hero-content container max-w-6xl flex justify-between -translate-y-[60px]">
     <div class="max-w-md">
       <h1 class="text-6xl font-accent font-bold">Hello there<span class="text-5xl ml-2 pb-1">🤓</span></h1>
-      <p class="py-6 text-2xl leading-8 font-accent">Provident cupiditate voluptatem et in. Quaerat fugiat ut assumenda excepturi exercitationem quasi.
-        In deleniti eaque aut repudiandae et a id nisi.</p>
+      <p class="py-6 text-2xl leading-8 font-accent">I'm Erik and I love making things on the web. On this site you can find info and links to my <a href="/projects">projects</a> and some thoughts of mine on my <a href="/blog">blog</a></p>
       <!-- <button class="btn btn-primary">Get Started</button> -->
     </div>
     <div class="mockup-code font-mono w-1/2 bg-base-300 bg-opacity-50 shadow-md py-4">
@@ -12,8 +11,7 @@
         <ul class="grid grid-cols-3 gap-x-6 w-full">
           {% for project in projects %}
           <li class="flex">
-            <button class="link text-info-content" hx-get="/project/{{ loop.index-1 }}" hx-target="#content"
-              hx-swap="innerHtml">{{ project.name }}</button>
+            <a class="link text-info-content" href="/projects/{{ project.name }}">{{ project.name }}</a>
           </li>
           {% endfor %}
         </ul>

@@ -1,31 +1,8 @@
-{% set project = projects[selected_index] %}
-<section class="container mx-auto max-w-6xl relative h-fullscreenMinusHeader grid place-items-center transition-all py-8" id="project">
-  <figure class="carousel w-full flex-col bg-base-300 bg-opacity-50 rounded-box relative">
-    {% if (project.media_format.is_image()) %}
-    <img src={{ project.media_url }} alt="placeholder"
-      class="w-full aspect-[16/8] object-cover object-left rounded-box rounded-b-none shadow-md" />
-    {% else %}
-    <video class="aspect-[16/8] object-fill" src="{{ project.media_url }}" muted loop controls playsinline
-      controlslist="nodownload"></video>
-    {% endif %}
-    <figcaption class="grid gap-2 pt-8 pb-4 px-8 relative">
-      <div class="flex justify-between">
-      <h3 class="card-title fade-in font-accent text-2xl">{{ project.name }}</h3>
-    <ul class="flex gap-4 p-1 bg-neutral bg-opacity-70 rounded-xl">
-      <li class="flex items-center"><i class="fa-brands fa-github fa-lg"></i></li>
-      <li class="flex items-center"><i class="fa-solid fa-arrow-up-right-from-square fa-lg"></i></li>
-    </ul>
-      </div>
-      <p class="mt-0 mb-2 fade-in text-lg font-accent">{{ project.description }}</p>
-      <ul class="flex gap-1 w-full fade-in font-mono">
-        {% for technology in project.tech %}
-        <li class="bg-neutral shadow-lg rounded-md py-1 px-2">
-          <i class="{{ technology.fa_classname}}"></i>
-          <span class="font-medium">{{ technology.name }}</span>
-        </li>
-        {% endfor %}
-      </ul>
-    </figcaption>
-    {% include "pagination.html" %}
-  </figure>
-</section>
+<html lang="en" data-theme="custom">
+
+<head>
+  {% include "head.html" %}
+</head>
+{% include "header.html" %}
+{% include "project.html" %}
+</html>

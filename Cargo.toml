@@ -9,6 +9,7 @@ edition = "2021"
 askama = "0.12.1"
 askama_axum = "0.4.0"
 axum = { version = "0.7.5", features = ["macros"]}
+axum-extra = { version = "0.9.3", features=["query"]}
 axum-template = "2.2.0"
 handlebars = "5.1.2"
 markdown = "1.0.0-alpha.17"

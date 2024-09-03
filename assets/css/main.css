@@ -2830,26 +2830,13 @@ html {
   box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
 }
 
-.absolute {
-  position: absolute;
-}
-
 .relative {
   position: relative;
-}
-
-.inset-0 {
-  inset: 0px;
 }
 
 .mx-auto {
   margin-left: auto;
   margin-right: auto;
-}
-
-.my-6 {
-  margin-top: 1.5rem;
-  margin-bottom: 1.5rem;
 }
 
 .mb-0 {
@@ -2862,6 +2849,10 @@ html {
 
 .mb-1 {
   margin-bottom: 0.25rem;
+}
+
+.mb-12 {
+  margin-bottom: 3rem;
 }
 
 .mb-2 {
@@ -2892,10 +2883,6 @@ html {
   margin-top: 1.5rem;
 }
 
-.mb-12 {
-  margin-bottom: 3rem;
-}
-
 .inline-block {
   display: inline-block;
 }
@@ -2920,6 +2907,10 @@ html {
   height: 50%;
 }
 
+.h-12 {
+  height: 3rem;
+}
+
 .h-5 {
   height: 1.25rem;
 }
@@ -2936,14 +2927,6 @@ html {
   height: 100vh;
 }
 
-.h-48 {
-  height: 12rem;
-}
-
-.h-12 {
-  height: 3rem;
-}
-
 .max-h-96 {
   max-height: 24rem;
 }
@@ -2956,20 +2939,12 @@ html {
   width: 1.25rem;
 }
 
-.w-96 {
-  width: 24rem;
+.w-64 {
+  width: 16rem;
 }
 
 .w-full {
   width: 100%;
-}
-
-.w-48 {
-  width: 12rem;
-}
-
-.w-64 {
-  width: 16rem;
 }
 
 .max-w-6xl {
@@ -3009,10 +2984,6 @@ html {
   grid-template-columns: repeat(3, minmax(0, 1fr));
 }
 
-.grid-cols-2 {
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-}
-
 .flex-col {
   flex-direction: column;
 }
@@ -3041,16 +3012,16 @@ html {
   gap: 0.5rem;
 }
 
+.gap-3 {
+  gap: 0.75rem;
+}
+
 .gap-4 {
   gap: 1rem;
 }
 
 .gap-6 {
   gap: 1.5rem;
-}
-
-.gap-3 {
-  gap: 0.75rem;
 }
 
 .gap-x-6 {
@@ -3107,6 +3078,10 @@ html {
   --tw-bg-opacity: 0.1;
 }
 
+.bg-opacity-20 {
+  --tw-bg-opacity: 0.2;
+}
+
 .bg-opacity-50 {
   --tw-bg-opacity: 0.5;
 }
@@ -3149,11 +3124,6 @@ html {
 .px-2 {
   padding-left: 0.5rem;
   padding-right: 0.5rem;
-}
-
-.px-8 {
-  padding-left: 2rem;
-  padding-right: 2rem;
 }
 
 .py-1 {
@@ -3214,6 +3184,11 @@ html {
   line-height: 2.25rem;
 }
 
+.text-4xl {
+  font-size: 2.25rem;
+  line-height: 2.5rem;
+}
+
 .text-5xl {
   font-size: 3rem;
   line-height: 1;
@@ -3229,19 +3204,14 @@ html {
   line-height: 1.75rem;
 }
 
-.text-xl {
-  font-size: 1.25rem;
-  line-height: 1.75rem;
-}
-
-.text-4xl {
-  font-size: 2.25rem;
-  line-height: 2.5rem;
-}
-
 .text-sm {
   font-size: 0.875rem;
   line-height: 1.25rem;
+}
+
+.text-xl {
+  font-size: 1.25rem;
+  line-height: 1.75rem;
 }
 
 .font-bold {
@@ -3311,12 +3281,6 @@ html {
   transition-duration: 150ms;
 }
 
-.transition-all {
-  transition-property: all;
-  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
-  transition-duration: 150ms;
-}
-
 .duration-500 {
   transition-duration: 500ms;
 }
@@ -3356,7 +3320,7 @@ code {
 }
 
 #project img, #project video {
-  transition: all .1s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: opacity .1s cubic-bezier(0.4, 0, 0.2, 1);
   opacity: 1;
 }
 
@@ -3381,197 +3345,66 @@ code {
   opacity: 0;
 }
 
-@media (min-width: 640px) {
-  @media (hover:hover) {
-    .sm\:menu li > *:not(ul, .menu-title, details, .btn):active,.sm\:menu li > *:not(ul, .menu-title, details, .btn).active,.sm\:menu li > details > summary:active {
-      --tw-bg-opacity: 1;
-      background-color: var(--fallback-n,oklch(var(--n)/var(--tw-bg-opacity)));
-      --tw-text-opacity: 1;
-      color: var(--fallback-nc,oklch(var(--nc)/var(--tw-text-opacity)));
-    }
+/* #content .slide-in {
+  transition: translate 200ms, opacity 200ms;
+  translate: 0px 0px;
+  opacity: 1;
+}
+
+#content.htmx-swapping .slide-in {
+  translate: -100px 0px;
+  opacity: 0;
+}
+
+#content.htmx-added .slide-in {
+  opacity: 1;
+}
+
+#content.htmx-settling .slide-in {
+  translate: 100px 0px;
+  opacity: 0;
+} */
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
   }
+}
 
-  @media (hover: hover) {
-    :where(.sm\:menu li:not(.menu-title, .disabled) > *:not(ul, details, .menu-title)):not(.active, .btn):hover, :where(.sm\:menu li:not(.menu-title, .disabled) > details > summary:not(.menu-title)):not(.active, .btn):hover {
-      cursor: pointer;
-      outline: 2px solid transparent;
-      outline-offset: 2px;
-    }
-
-    @supports (color: oklch(0% 0 0)) {
-      :where(.sm\:menu li:not(.menu-title, .disabled) > *:not(ul, details, .menu-title)):not(.active, .btn):hover, :where(.sm\:menu li:not(.menu-title, .disabled) > details > summary:not(.menu-title)):not(.active, .btn):hover {
-        background-color: var(--fallback-bc,oklch(var(--bc)/0.1));
-      }
-    }
-
-    :where(.sm\:menu li:not(.menu-title, .disabled) > *:not(ul, details, .menu-title)):not(.active, .btn):hover, :where(.sm\:menu li:not(.menu-title, .disabled) > details > summary:not(.menu-title)):not(.active, .btn):hover {
-      cursor: pointer;
-      outline: 2px solid transparent;
-      outline-offset: 2px;
-    }
-
-    @supports (color: oklch(0% 0 0)) {
-      :where(.sm\:menu li:not(.menu-title, .disabled) > *:not(ul, details, .menu-title)):not(.active, .btn):hover, :where(.sm\:menu li:not(.menu-title, .disabled) > details > summary:not(.menu-title)):not(.active, .btn):hover {
-        background-color: var(--fallback-bc,oklch(var(--bc)/0.1));
-      }
-    }
-
-    :where(.sm\:menu li:not(.menu-title, .disabled) > *:not(ul, details, .menu-title)):not(.active, .btn):hover, :where(.sm\:menu li:not(.menu-title, .disabled) > details > summary:not(.menu-title)):not(.active, .btn):hover {
-      cursor: pointer;
-      outline: 2px solid transparent;
-      outline-offset: 2px;
-    }
-
-    @supports (color: oklch(0% 0 0)) {
-      :where(.sm\:menu li:not(.menu-title, .disabled) > *:not(ul, details, .menu-title)):not(.active, .btn):hover, :where(.sm\:menu li:not(.menu-title, .disabled) > details > summary:not(.menu-title)):not(.active, .btn):hover {
-        background-color: var(--fallback-bc,oklch(var(--bc)/0.1));
-      }
-    }
-
-    :where(.sm\:menu li:not(.menu-title, .disabled) > *:not(ul, details, .menu-title)):not(.active, .btn):hover, :where(.sm\:menu li:not(.menu-title, .disabled) > details > summary:not(.menu-title)):not(.active, .btn):hover {
-      cursor: pointer;
-      outline: 2px solid transparent;
-      outline-offset: 2px;
-    }
-
-    @supports (color: oklch(0% 0 0)) {
-      :where(.sm\:menu li:not(.menu-title, .disabled) > *:not(ul, details, .menu-title)):not(.active, .btn):hover, :where(.sm\:menu li:not(.menu-title, .disabled) > details > summary:not(.menu-title)):not(.active, .btn):hover {
-        background-color: var(--fallback-bc,oklch(var(--bc)/0.1));
-      }
-    }
+@keyframes fade-out {
+  to {
+    opacity: 0;
   }
+}
 
-  .sm\:menu {
-    display: flex;
-    flex-direction: column;
-    flex-wrap: wrap;
-    font-size: 0.875rem;
-    line-height: 1.25rem;
-    padding: 0.5rem;
+@keyframes slide-from-right {
+  from {
+    translate: 90px 0px;
   }
+}
 
-  .sm\:menu :where(li ul) {
-    position: relative;
-    white-space: nowrap;
-    margin-inline-start: 1rem;
-    padding-inline-start: 0.5rem;
+@keyframes slide-to-left {
+  to {
+    translate: -90px 0px;
   }
+}
 
-  .sm\:menu :where(li:not(.menu-title) > *:not(ul, details, .menu-title, .btn)),.sm\:menu :where(li:not(.menu-title) > details > summary:not(.menu-title)) {
-    display: grid;
-    grid-auto-flow: column;
-    align-content: flex-start;
-    align-items: center;
-    gap: 0.5rem;
-    grid-auto-columns: minmax(auto, max-content) auto max-content;
-    -webkit-user-select: none;
-       -moz-user-select: none;
-            user-select: none;
-  }
+/* define animations for the old and new content */
 
-  .sm\:menu li.disabled {
-    cursor: not-allowed;
-    -webkit-user-select: none;
-       -moz-user-select: none;
-            user-select: none;
-    color: var(--fallback-bc,oklch(var(--bc)/0.3));
-  }
+::view-transition-old(slide-it) {
+  animation: 180ms cubic-bezier(0.4, 0, 1, 1) both fade-out,
+ 600ms cubic-bezier(0.4, 0, 0.2, 1) both slide-to-left;
+}
 
-  .sm\:menu :where(li > .menu-dropdown:not(.menu-dropdown-show)) {
-    display: none;
-  }
+::view-transition-new(slide-it) {
+  animation: 420ms cubic-bezier(0, 0, 0.2, 1) 90ms both fade-in,
+ 600ms cubic-bezier(0.4, 0, 0.2, 1) both slide-from-right;
+}
 
-  :where(.sm\:menu li) {
-    position: relative;
-    display: flex;
-    flex-shrink: 0;
-    flex-direction: column;
-    flex-wrap: wrap;
-    align-items: stretch;
-  }
+/* tie the view transition to a given CSS class */
 
-  :where(.sm\:menu li) .badge {
-    justify-self: end;
-  }
-
-  :where(.sm\:menu li:empty) {
-    --tw-bg-opacity: 1;
-    background-color: var(--fallback-bc,oklch(var(--bc)/var(--tw-bg-opacity)));
-    opacity: 0.1;
-    margin: 0.5rem 1rem;
-    height: 1px;
-  }
-
-  .sm\:menu :where(li ul):before {
-    position: absolute;
-    bottom: 0.75rem;
-    inset-inline-start: 0px;
-    top: 0.75rem;
-    width: 1px;
-    --tw-bg-opacity: 1;
-    background-color: var(--fallback-bc,oklch(var(--bc)/var(--tw-bg-opacity)));
-    opacity: 0.1;
-    content: "";
-  }
-
-  .sm\:menu :where(li:not(.menu-title) > *:not(ul, details, .menu-title, .btn)),.sm\:menu :where(li:not(.menu-title) > details > summary:not(.menu-title)) {
-    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
-    transition-timing-function: cubic-bezier(0, 0, 0.2, 1);
-    border-radius: var(--rounded-btn, 0.5rem);
-    padding-left: 1rem;
-    padding-right: 1rem;
-    padding-top: 0.5rem;
-    padding-bottom: 0.5rem;
-    text-align: start;
-    transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, -webkit-backdrop-filter;
-    transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter;
-    transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter, -webkit-backdrop-filter;
-    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
-    transition-timing-function: cubic-bezier(0, 0, 0.2, 1);
-    transition-duration: 200ms;
-    text-wrap: balance;
-  }
-
-  :where(.sm\:menu li:not(.menu-title, .disabled) > *:not(ul, details, .menu-title)):not(summary, .active, .btn).focus, :where(.sm\:menu li:not(.menu-title, .disabled) > *:not(ul, details, .menu-title)):not(summary, .active, .btn):focus, :where(.sm\:menu li:not(.menu-title, .disabled) > *:not(ul, details, .menu-title)):is(summary):not(.active, .btn):focus-visible, :where(.sm\:menu li:not(.menu-title, .disabled) > details > summary:not(.menu-title)):not(summary, .active, .btn).focus, :where(.sm\:menu li:not(.menu-title, .disabled) > details > summary:not(.menu-title)):not(summary, .active, .btn):focus, :where(.sm\:menu li:not(.menu-title, .disabled) > details > summary:not(.menu-title)):is(summary):not(.active, .btn):focus-visible {
-    cursor: pointer;
-    background-color: var(--fallback-bc,oklch(var(--bc)/0.1));
-    --tw-text-opacity: 1;
-    color: var(--fallback-bc,oklch(var(--bc)/var(--tw-text-opacity)));
-    outline: 2px solid transparent;
-    outline-offset: 2px;
-  }
-
-  .sm\:menu li > *:not(ul, .menu-title, details, .btn):active,.sm\:menu li > *:not(ul, .menu-title, details, .btn).active,.sm\:menu li > details > summary:active {
-    --tw-bg-opacity: 1;
-    background-color: var(--fallback-n,oklch(var(--n)/var(--tw-bg-opacity)));
-    --tw-text-opacity: 1;
-    color: var(--fallback-nc,oklch(var(--nc)/var(--tw-text-opacity)));
-  }
-
-  .sm\:menu :where(li > details > summary)::-webkit-details-marker {
-    display: none;
-  }
-
-  .sm\:menu :where(li > details > summary):after,.sm\:menu :where(li > .menu-dropdown-toggle):after {
-    justify-self: end;
-    display: block;
-    margin-top: -0.5rem;
-    height: 0.5rem;
-    width: 0.5rem;
-    transform: rotate(45deg);
-    transition-property: transform, margin-top;
-    transition-duration: 0.3s;
-    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
-    content: "";
-    transform-origin: 75% 75%;
-    box-shadow: 2px 2px;
-    pointer-events: none;
-  }
-
-  .sm\:menu :where(li > details[open] > summary):after,.sm\:menu :where(li > .menu-dropdown-toggle.menu-dropdown-show):after {
-    transform: rotate(225deg);
-    margin-top: 0;
-  }
+.slide-in {
+  view-transition-name: slide-it;
 }
 
 .hover\:scale-105:hover {
@@ -3583,12 +3416,6 @@ code {
 .hover\:scale-125:hover {
   --tw-scale-x: 1.25;
   --tw-scale-y: 1.25;
-  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
-}
-
-.hover\:scale-\[101\%\]:hover {
-  --tw-scale-x: 101%;
-  --tw-scale-y: 101%;
   transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
 }
 
@@ -3611,10 +3438,6 @@ code {
   background-color: transparent;
 }
 
-.active\:bg-transparent:active {
-  background-color: transparent;
-}
-
 @media (min-width: 640px) {
   .sm\:flex {
     display: flex;
@@ -3634,4 +3457,3 @@ code {
     justify-self: end;
   }
 }
-

@@ -8,16 +8,18 @@
 
 <body>
   {% include "header.html" %}
-  <article class="prose prose-xl mx-auto mb-24 font-accent">
-    <div class="not-prose text-sm breadcrumbs font-mono">
-      <ul>
-        <li><a href="/posts" class="link">Blog posts</a></li>
-        <li>{{ post.title }}</li>
-      </ul>
-    </div>
-    <img src={{ post.featured_image }} class="max-h-96 w-full mt-6 object-cover" />
-    {{ html|safe}}
-  </article>
+  <main id="content">
+    <article class="prose prose-xl mx-auto mb-24 font-accent">
+      <div class="not-prose text-sm breadcrumbs font-mono">
+        <ul>
+          <li><a href="/posts" class="link">Blog posts</a></li>
+          <li>{{ post.title }}</li>
+        </ul>
+      </div>
+      <img src={{ post.featured_image }} class="max-h-96 w-full mt-6 object-cover" />
+      {{ html|safe}}
+    </article>
+  </main>
   {% include "footer.html" %}
   <script src="/assets/js/prism.js"></script>
 </body>
