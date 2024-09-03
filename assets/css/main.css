@@ -3137,6 +3137,10 @@ html {
   padding: 1rem;
 }
 
+.p-0 {
+  padding: 0px;
+}
+
 .px-2 {
   padding-left: 0.5rem;
   padding-right: 0.5rem;
@@ -3828,6 +3832,10 @@ code {
 
   .md\:p-0 {
     padding: 0px;
+  }
+
+  .md\:p-2 {
+    padding: 0.5rem;
   }
 
   .md\:px-0 {
