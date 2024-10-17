@@ -1,4 +1,4 @@
-# My Nixos Laptop Setup
+# My NixOS Laptop Setup
 
 I like customizing things. So when the hard drive on my laptop died, wiping my Windows install that I had been running for 3 years and forcing me to start from scratch, I decided to do some research to find a platform where I could craft my ideal development machine. I found that in NixOS, a Linux distro that gives you a declarative way to manage all of your packages, services, users, and more. This also allows you to easily port your entire system to a new machine if necessary. This is less a tutorial and more a collection of snippets showcasing what can be done on a laptop with a declarative OS.
 

@@ -12,7 +12,7 @@ pub struct BlogPost {
 
 pub static BLOG_POSTS: &'static[&'static BlogPost] = &[
     &BlogPost{ 
-        title: "My Nixos Laptop Setup",
+        title: "My NixOS Laptop Setup",
         excerpt: "I like customizing things. So when the hard drive on my laptop died, wiping my Windows install that I had been running for 3 years...",
         slug: "nixos-laptop",
         markdown_path: "nixos.md",
