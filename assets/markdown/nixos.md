@@ -8,7 +8,7 @@ While not the most exciting, it would be hard to get anything done without the p
 
 ### TLP
 
-Linux distros can drain a laptop battery pretty quickly. Thankfully the NixOS github provides [example configurations]((https://github.com/NixOS/nixos-hardware) for many common laptop models. Many of them feature some variation of this TLP setup, which allows you to throttle CPU performance to preserve battery life when not charging, and alter charging behavior to improve the battery longevity. 
+Linux distros can drain a laptop battery pretty quickly. Thankfully the NixOS github provides [example configurations](https://github.com/NixOS/nixos-hardware) for many common laptop models. Many of them feature some variation of this TLP setup, which allows you to throttle CPU performance to preserve battery life when not charging, and alter charging behavior to improve the battery longevity. 
 
 ```nix
   services.tlp = {
