@@ -1,12 +1,14 @@
-# How I use NixOS as a daily driver
+# My Nixos Laptop Setup
 
-Status: Rough Draft
+I like customizing things. So when the hard drive on my laptop died, wiping my Windows install that I had been running for 3 years and forcing me to start from scratch, I decided to do some research to find a platform where I could craft my ideal development machine. I found that in NixOS, a Linux distro that gives you a declarative way to manage all of your packages, services, users, and more. This also allows you to easily port your entire system to a new machine if necessary. This is less a tutorial and more a collection of snippets showcasing what can be done on a laptop with a declarative OS.
 
-# Laptop
+## Utility
 
-## TLP
+While not the most exciting, it would be hard to get anything done without the proper battery saving and graphics rendering utilities.
 
-Compared to its well known counterparts, Linux can drain a laptop battery pretty quickly. Thankfully the NixOS website provides example configurations for many common laptop models. Many of them feature some variation of this TLP setup, which allows you to throttle CPU performance to preserve battery life when not charging, and alter charging behavior to improve the battery longevity. 
+### TLP
+
+Linux distros can drain a laptop battery pretty quickly. Thankfully the NixOS github provides [example configurations]((https://github.com/NixOS/nixos-hardware) for many common laptop models. Many of them feature some variation of this TLP setup, which allows you to throttle CPU performance to preserve battery life when not charging, and alter charging behavior to improve the battery longevity. 
 
 ```nix
   services.tlp = {
@@ -24,17 +26,16 @@ Compared to its well known counterparts, Linux can drain a laptop battery pretty
         CPU_MAX_PERF_ON_BAT = 20;
 
        #Optional helps save long term battery health
-       START_CHARGE_THRESH_BAT0 = 40; # 40 and bellow it starts to charge
+       START_CHARGE_THRESH_BAT0 = 40; # 40 and below it starts to charge
        STOP_CHARGE_THRESH_BAT0 = 80; # 80 and above it stops charging
 
       };
   };
-
 ```
 
-## Graphics
+### Graphics
 
-Also found in the common nix configurations is this graphics configuration. My laptop provides a virtual intel graphics card that runs on the CPU and an Nvidia graphics card. Depending on the setup you chose, you can utilize one or the other or both in varying ways. I chose the prime offloading setup, which allows you to offload certain applications to the Nvidia GPU. I don’t do a lot of gaming etc, I mostly have found the offloading useful for hardware accelerated terminals and browsers which do a lot rendering and can clog up the CPU.
+Also found in the common nix configurations is this graphics configuration. My laptop provides a virtual Intel graphics card that runs on the CPU and an Nvidia integrated graphics card. Depending on the setup you chose, you can utilize one or the other or both in varying ways. I chose the prime offloading setup, which allows you to offload certain applications to the Nvidia GPU. I don’t do a lot of gaming etc, I mostly have found the offloading useful for hardware accelerated terminals and browsers which do a lot rendering and can clog up the CPU.
 
 ```nix
   hardware.nvidia = {
@@ -51,16 +52,15 @@ Also found in the common nix configurations is this graphics configuration. My l
       nvidiaBusId = "PCI:1:0:0";
     };
   };
-
 ```
 
 ## Theme
 
-High level theming is so straightforward in Nix I love it!
+High level theming is so straightforward in Nix. It's nice to know that if I ever upgrade my machine my theme will just work.
 
 ### GTK theme
 
-The catppuccin GTK theme can be included as a package in home-manager
+The Catppuccin GTK theme can be included as a package in home-manager
 
 ```nix
 home.packages = with pkgs; [    
@@ -86,7 +86,7 @@ To set the background an image just needs to be added to the home directory with
 
 ### Global Colors
 
-Having a global colors.nix file can be super helpful, often different aspects of a system like window managers, terminals, etc. will require different theme configurations, but as long as you can configure them from Nix (which you most likely can) you can apply your global color theme just by importing colors.nix and using the variables
+Having a global colors.nix file can be super helpful, often different aspects of a system like window managers, terminals, zsh/bash etc. will require different theme configurations, but as long as you can configure them from Nix (which you most likely can) you can apply your global color theme just by importing colors.nix and using the variables
 
 ```nix
 {
@@ -100,14 +100,13 @@ Having a global colors.nix file can be super helpful, often different aspects of
   surface1 = "#45475a";
   base = "#1e1e2e";
 }
-
 ```
 
-## i3
+## i3 Window Manager
 
 ### Base config
 
-After doing a few i3 custom builds in VM’s, I found it pretty annoying to navigate my huge tmux.conf file to find a specific declaration. Co-locating keybindings with the theme and i3status gets out of hand so fast. Splitting different concerns into files which get imported helps me find things much quicker and lets me scale my config without worrying about bloating my monolithic config file.
+After doing a few i3 custom builds in VMs, I found it pretty annoying to navigate my huge config file to find a specific declaration. Co-locating keybindings with the theme and i3status can get unruly. Splitting concerns into files and importing them in the main config helps me find things much quicker and lets me scale my config without worrying about bloat.
 
 ```nix
 { config, pkgs, lib, ... }:
@@ -119,7 +118,7 @@ After doing a few i3 custom builds in VM’s, I found it pretty annoying to navi
     ./i3status.nix
     ./startup.nix
   ];
-    
+
   xsession.windowManager.i3 = {
     enable = true;
     config = {
@@ -138,12 +137,11 @@ After doing a few i3 custom builds in VM’s, I found it pretty annoying to navi
     '';
   };
 }
-
 ```
 
 ### Keybindings
 
-I didnt include most of my keybindings in this snippet 1. because they’re mostly default and 2. because its a subject people are very opinionated  and I don’t have a strong opinion, I just set it up in a way that felt good. But it is worth noting that with the xev package, you can find the name of any non-standard key on your laptop keyboard. Here I set up my volume and brightness keys to function normally.
+My personal keybindings are nothing special but It is worth noting that with the [xev](https://mynixos.com/nixpkgs/package/xorg.xev) package, you can find the name of any key on your laptop keyboard (even the non-standard ones). Here I set up the built in volume and brightness keys on my keyboard to function as you would expect.
 
 ```nix
 { config, pkgs, ... }:
@@ -153,7 +151,7 @@ in
 {
   xsession.windowManager.i3.config.modifier = "Mod4";
   xsession.windowManager.i3.config.keybindings = with pkgs; {
-		...
+        ...
     "XF86AudioLowerVolume" = "exec pamixer -d 5";
     "XF86AudioRaiseVolume" = "exec pamixer -i 5";
     "XF86AudioMute" = "exec pamixer -t";
@@ -164,7 +162,7 @@ in
 }
 ```
 
-### i3status
+### i3status (menu bar)
 
 Not much to say about this besides look at that declarative beauty. I much prefer this to the standard i3status syntax. I find this to be a completely reasonable status bar for laptop use
 
@@ -210,12 +208,11 @@ Not much to say about this besides look at that declarative beauty. I much prefe
     };
   };
 }
-
 ```
 
 ## Neovim
 
-This tip comes on behalf of the awesome Vimjoyer youtube channel. Many of the Nix docs recommend adding extra config to packages via a string template. Some people prefer this approach as it keeps everything in Nix, however in the case of Neovim I find it much more convenient to do via Lua file as that’s pretty much the expected workflow. It’s possible to define a few small nix functions in the let block which can convert a string of Lua code or a path to a lua file into a Nix friendly template string.
+This tip comes on behalf of the awesome [Vimjoyer](https://www.youtube.com/@vimjoyer) youtube channel. Many of the Nix docs recommend adding extra config to packages via a template string directly in the .nix file. Some people prefer this approach as it keeps everything in Nix, however in the case of Neovim I find it much more convenient to do manage my config via Lua files. You can define a few small nix functions which convert Lua code and files into Nix friendly template strings to keep things clean. I keep these Lua files in a separate repo so I can use them in Nix but also any other OS using a standard package manager like Lazy.nvim.
 
 ```nix
 { config, pkgs, lib, ...}:
@@ -238,7 +235,7 @@ in
       efm-langserver
       emmet-ls
       vscode-langservers-extracted
-      
+
       ripgrep
       xclip
       wl-clipboard
@@ -256,7 +253,7 @@ in
       luasnip
       cmp_luasnip
       friendly-snippets
-      
+
       {
         plugin = vim-sleuth;
         config = toLua "require(\'bufferline\').setup()";
@@ -303,12 +300,11 @@ in
     vimdiffAlias = true;
   };
 }
-
 ```
 
 ## Tmux
 
-Shoutout vim-tmux-navigator!
+Shout out [vim-tmux-navigator](https://github.com/christoomey/vim-tmux-navigator)!
 
 ```nix
 { config, pkgs, ... }:
@@ -326,18 +322,16 @@ Shoutout vim-tmux-navigator!
     extraConfig = '' unbind C-. '';
   };
 }
-
 ```
 
 ## Apps
 
-In other linux distros, heck even on mac and windows, I find it really difficult to keep track of whats installed. I’ve had countless experiences where in an urgent debugging frenzy installed a bunch of random packages which may or may not help me solve my problem, and then completely forget they exist. Or I’ll end up with 2 or 3 local media players etc. Even on Arch, which prides itself on allowing for lightweight minimal configs, doesn’t give you this sort observability re: whats installed and you “lightweight” system can quickly get out of hand. There’s something to be said for being able to see all your users installed packages/applications in one place and be able to pick and choose the right tool for each use case.
+In other Linux distros, heck even on mac and windows, I find it really difficult to keep track of whats installed. I've had countless experiences where in an urgent debugging frenzy, I install a bunch of random packages which may or may not help me solve my problem, and then completely forget they exist. Or I’ll end up with 2 or 3 local media players etc. There’s something to be said for being able to see all your user's installed packages/applications in one place and pick and choose the right tool for each use case.
 
 ```nix
   home.packages = with pkgs; [
 
     kitty #terminal
-    neofetch #obligatory
     btop #htop but pretty
     du-dust #disk usage but pretty
     bat #cat but pretty
@@ -351,8 +345,7 @@ In other linux distros, heck even on mac and windows, I find it really difficult
 
     google-chrome 
     spotify
-    spotify-tray #add spotify to i3status
-    jellyfin-media-player
+    spotify-tray #add spotify to menu bar
     inkscape #svg editor
     strawberry #local music player
     haruna #local video player
@@ -363,19 +356,18 @@ In other linux distros, heck even on mac and windows, I find it really difficult
     redis
     mongodb-compass
     typescript
-    bruno #free software Postman alternative
+    bruno #free Postman alternative
 
   ];
-
 ```
 
 ## Scripts
 
-With home manager you can include a shell script as a package that generates an executable binary. Some scripts I know I’ll always want associated with my user, and being able to do that in a declarative way is very convenient
+With home manager, a Nix-native way to manage individual user environments, you can declare a shell script as a package, which makes it into an executable binary that can be called by your user. Some scripts I know I’ll always want associated with my user, and I find it much easier to just declare once and never have to worry about adding execution privileges or adding it to the PATH.
 
 ### Reconfig
 
-I got the idea for this from a Librephoenix youtube video. One thing you find yourself doing a lot in NixOS, especially as you’re getting started is edit and rebuild your configuration. This script opens my NixOS configuration in Neovim. When I finish editing the config, I see a git diff including all of the changes I made. From there the configuration rebuilds, I opted to suppress the verbose build output and only show errors if they are encountered to prevent too much visual noise. If the home-manager and system configurations both successfully build, the changes are committed to a git repository.
+I got the idea for this from a [LibrePhoenix](https://www.youtube.com/@librephoenix) youtube video. One thing you find yourself doing a lot in NixOS, especially as you’re getting started, is editing and rebuilding your configuration. This script opens my NixOS configuration in Neovim. When I finish editing the config, I see a git diff including all of the changes I made. From there the configuration rebuilds. I opted to suppress the verbose build output and only show errors if they are encountered to prevent too much visual noise. If the home-manager and system configurations both successfully build, the changes are committed to a git repository.
 
 ```nix
 { config, pkgs, ... }:
@@ -431,15 +423,8 @@ I got the idea for this from a Librephoenix youtube video. One thing you find yo
     '')
   ];
 }
-
 ```
 
-Part II Flakes and Nix Develop coming soon
+## Conclusion
 
-## Sources
-
-Librephoenix
-
-Vimjoyer
-
-Nix common configurations
+This is barely scratching the surface of how I use Nix. There are a bunch more topics I'd like to cover in future posts. But for now I just wanted to share some interesting examples of setting up a dev machine declaratively. If you've been dreaming of a hyper specific and customizable dev setup maybe check out NixOS!

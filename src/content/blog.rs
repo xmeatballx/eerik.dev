@@ -12,6 +12,15 @@ pub struct BlogPost {
 
 pub static BLOG_POSTS: &'static[&'static BlogPost] = &[
     &BlogPost{ 
+        title: "My Nixos Laptop Setup",
+        excerpt: "I like customizing things. So when the hard drive on my laptop died, wiping my Windows install that I had been running for 3 years...",
+        slug: "homelab",
+        markdown_path: "nixos.md",
+        published_date: "10/17/24",
+        featured_image: "/assets/images/nixos.png",
+        featured: true
+    },
+    &BlogPost{ 
         title: "Setting up a Homelab",
         excerpt: "After a month of Reddit suggesting posts from a community called Homelab based on my other interests, I gave in to curiosity...",
         slug: "homelab",
@@ -27,7 +36,7 @@ pub static BLOG_POSTS: &'static[&'static BlogPost] = &[
         markdown_path: "notion_integration/notion_integration.md",
         published_date: "3/14/24",
         featured_image: "/assets/images/notion_integration.png",
-        featured: true
+        featured: false
     },
     &BlogPost{ 
         title: "Generating color palettes with musical ratios",
