@@ -40,7 +40,7 @@ pub static BLOG_POSTS: &'static[&'static BlogPost] = &[
     },
     &BlogPost{ 
         title: "Generating color palettes with musical ratios",
-        excerpt: "As a developer with a background in music composition, I had an idea for a web app called ColorChords, which translated musical harmonic ratios into color space...",
+        excerpt: "As a developer with a background in music composition, I had an idea for a web app called ColorChords...",
         slug: "colorchords",
         markdown_path: "colorchords.md",
         published_date: "11/11/23",
