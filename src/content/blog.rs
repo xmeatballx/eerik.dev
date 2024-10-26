@@ -18,7 +18,7 @@ pub static BLOG_POSTS: &'static[&'static BlogPost] = &[
         markdown_path: "nixos.md",
         published_date: "10/17/24",
         featured_image: "/assets/images/nixos.png",
-        featured: true
+        featured: false
     },
     &BlogPost{ 
         title: "Setting up a Homelab",
@@ -31,12 +31,12 @@ pub static BLOG_POSTS: &'static[&'static BlogPost] = &[
     },
     &BlogPost{ 
         title: "Custom NodeJS Notion integration",
-        excerpt: "Notion is a powerful knowledge management system and productivity tool. I'll show you how to encorporate your Notion data in a basic web app...",
+        excerpt: "Notion is a powerful knowledge management system and productivity tool...",
         slug: "notion",
         markdown_path: "notion_integration/notion_integration.md",
         published_date: "3/14/24",
         featured_image: "/assets/images/notion_integration.png",
-        featured: false
+        featured: true
     },
     &BlogPost{ 
         title: "Generating color palettes with musical ratios",
@@ -71,5 +71,6 @@ pub struct FeaturedBlogsTemplate {
 #[derive(Template)]
 #[template(path = "blog.html")]
 pub struct BlogPageTemplate { 
-    pub featured_posts: Vec<&'static BlogPost>
+    pub featured_posts: Vec<&'static BlogPost>,
+    pub posts: &'static[&'static BlogPost]
 }

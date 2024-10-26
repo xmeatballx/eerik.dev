@@ -1,20 +1,30 @@
 {% set project = projects[selected_index] %}
-<section class="container mx-auto max-w-6xl relative px-6 md:px-0 md:h-fullscreenMinusHeader grid place-items-center py-8 slide-in"
+<div id="modal" class="hidden absolute inset-0 grid place-items-center z-10 bg-black bg-opacity-50 backdrop-blur-md">
+  <button class="absolute top-0 right-0 p-3 text-lg font-bold"><img src="/assets/images/close_icon_white.png"/></button>
+  <figure class="rounded-box max-w-[80%] relative">
+    <img src="{{ project.media_url }}" class="z-10 rounded-box" />
+  </figure>
+</div>
+<section
+  class="container mx-auto max-w-6xl px-6 md:px-0 md:h-fullscreenMinusHeader grid place-items-center py-8 slide-in"
   id="project">
-  <figure class="carousel w-full flex-col bg-opacity-50 relative">
+  <figure class="carousel w-full flex-col bg-opacity-50">
     {% if (project.media_format.is_image()) %}
     <img src={{ project.media_url }} alt="placeholder" id="project-img"
-      class="w-full aspect-[16/8] object-cover object-left rounded-box shadow-md" />
+      class="w-full aspect-[16/8] object-cover object-left-top rounded-box shadow-md"
+      hx-get="/image_modal?image_url={{ project.media_url }}&display_class=grid" hx-target="#modal" hx-trigger="click"
+      hx-swap="outerHTML" />
     {% else %}
-    <video class="aspect-[16/8] object-fill" src="{{ project.media_url }}" muted loop controls playsinline
+    <video class="aspect-[16/8] object-fill rounded-box" src="{{ project.media_url }}" muted loop controls playsinline
       controlslist="nodownload"></video>
     {% endif %}
-    <figcaption class="flex flex-col gap-2 pt-8 pb-4 relative">
+    <figcaption class="flex flex-col gap-2 pt-8 pb-4">
       <div class="flex">
         <h3 class="card-title fade-in font-accent text-lg md:text-2xl mr-2">{{ project.name }}</h3>
         <ul class="flex gap-3 p-1 bg-neutral bg-opacity-70 rounded-xl">
           {% if (project.github_url != "hidden") %}
-          <li class="flex items-center"><a href="{{ project.github_url }}" target="_blank"><i class="fa-brands fa-github fa-lg"></i></a></li>
+          <li class="flex items-center"><a href="{{ project.github_url }}" target="_blank"><i
+                class="fa-brands fa-github fa-lg"></i></a></li>
           {% endif %}
           {% if (project.url != "hidden") %}
           <li class="flex items-center"><a href="{{ project.url }}" target="_blank"><i

@@ -1,0 +1,10 @@
+<div class="absolute inset-0 h-full z-10 m-0 bg-transparent grid place-items-center backdrop-blur-md" id="modal">
+  <button class="absolute top-0 right-0 px-3 py-2 text-lg font-bold"><img
+      src="/assets/images/close_icon_white.png" /></button>
+  <figure class="rounded-box w-full max-w-none md:max-w-[90%] relative z-10 ">
+    <img id="modal-img" src={{ image_url }} class="rounded-box" />
+  </figure>
+</div>
+<script>
+  htmx.on("#modal", "click", (e) => {if (e.target.getAttribute('id') !='modal-img' ) htmx.find('#modal').style.display='none' })
+</script>

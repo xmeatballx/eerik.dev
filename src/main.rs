@@ -1,6 +1,6 @@
 use askama_axum::Template;
 use axum::{
-    extract::Path, extract::State, http::StatusCode, response::{Html, IntoResponse, Response}, routing::get, Router
+    extract::Path, extract::State, extract::Query, http::StatusCode, response::{Html, IntoResponse, Response}, routing::get, Router
 };
 use tracing_subscriber::{layer::SubscriberExt, util::SubscriberInitExt};
 use std::sync::Arc;
@@ -27,6 +27,7 @@ async fn main() {
         .route("/project/:selected_index", get(project))
         .route("/projects", get(default_projects_page))
         .route("/projects/:project_name", get(dynamic_projects_page))
+        .route("/image_modal", get(image_modal))
         .route("/blog", get(blog_page))
         .route("/featured_posts", get(featured_blog_posts))
         .route("/posts", get(blog))
@@ -49,7 +50,7 @@ async fn blog() -> impl IntoResponse {
 
 async fn blog_page() -> impl IntoResponse {
     let featured_posts: Vec<&content::blog::BlogPost> = content::blog::BLOG_POSTS.iter().filter_map(|&p| if p.featured { Some(p) } else { None }).collect();
-    let template = content::blog::BlogPageTemplate { featured_posts };
+    let template = content::blog::BlogPageTemplate { featured_posts, posts: &content::blog::BLOG_POSTS };
     HtmlTemplate(template)
 }
 
@@ -94,6 +95,17 @@ async fn dynamic_projects_page( Path(project_name): Path<String>, State(projects
     HtmlTemplate(template)
 }
 
+#[derive(serde::Deserialize)]
+struct ImageModalQuery {
+    image_url: String,
+    display_class: String
+}
+
+async fn image_modal( query: Query<ImageModalQuery> ) -> impl IntoResponse {
+    let template = ImageModalTemplate { image_url: query.image_url.clone(), display_class: query.display_class.clone() };
+    HtmlTemplate(template)
+}
+
 #[derive(Template)]
 #[template(path = "index.html")]
 struct HomeTemplate {
@@ -108,6 +120,13 @@ struct HomeTemplate {
 struct HeroTemplate {
     projects: content::project::Projects,
     technologies: [&'static content::tech::Technology; 11],
+}
+
+#[derive(Template)]
+#[template(path = "image_modal.html")]
+struct ImageModalTemplate {
+    image_url: String,
+    display_class: String
 }
 
 struct HtmlTemplate<T>(T);

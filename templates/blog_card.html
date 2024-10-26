@@ -1,9 +1,9 @@
-<li class="card w-full shadow-lg hover:scale-105 duration-500 cursor-pointer overflow-hidden">
+<li class="card w-full shadow-lg hover:scale-[101%] duration-100 cursor-pointer overflow-hidden hover:bg-neutral group">
   <a href="/posts/{{post.slug}}" class="h-full">
     <figure class="overflow-hidden h-1/2">
-      <img src={{post.featured_image}} class="hover:scale-125 transition duration-500 h-full" />
+      <img src={{post.featured_image}} class="hover:scale-[102%] transition duration-100 h-full" />
     </figure>
-    <div class="card-body bg-base-200 h-full">
+    <div class="card-body bg-base-200 md:h-full bg-gradient-to-br from-neutral to-base-100 bg-opacity-10 group-hover:bg-none group-hover:bg-neutral">
       <h4 class="card-title font-mono">{{post.title}}</h4>
       <p class="font-accent">{{post.excerpt}}</p>
     </div>

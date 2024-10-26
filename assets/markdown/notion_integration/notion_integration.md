@@ -195,7 +195,7 @@ Most of our styling will be handled by [Open Props Normalize](https://codepen.io
       * {
         transition: all 0.5s;
       }
-    </style>
+</style>
 ```
 
 Here we are loading Open Props and changing the default dark mode background color to match Notion and adding some flare to the loading process with a CSS transition.
@@ -210,14 +210,14 @@ const quote = document.querySelector('.quote');
 const source = document.querySelector('.source');
 
 fetch('/data')
-	.then((res) => res.json())
-	.then((data) => {
-		loader.style.display = 'none';
+  .then((res) => res.json())
+  .then((data) => {
+    loader.style.display = 'none';
     quote.textContent = data.content;
     quote.classList.remove('suspense')
     source.textContent = `${data.book}, ${data.chapter}, p. ${data.page}`;
     source.classList.remove('suspense');
- });
+  });
 ```
 
 We get references to our HTML elements and make a fetch request to our server. Then we parse our JSON object and inject the data into the DOM.
