@@ -6,7 +6,7 @@ module.exports = {
   theme: {
     extend: {
       height: {
-        "fullscreenMinusHeader": "calc(100vh -  80px - 56px)", //temporary hack fs - header height - footer height
+        "fullscreenMinusHeader": "calc(100vh -  80px - 40px)", //temporary hack fs - header height - footer height
       },
     },
     fontFamily: {
