@@ -12,6 +12,15 @@ pub struct BlogPost {
 
 pub static BLOG_POSTS: &'static[&'static BlogPost] = &[
     &BlogPost{ 
+        title: "I over-engineered my portfolio",
+        excerpt: "A common problem I run into is wanting to test out new technologies but not knowing what to build. The best path forward is usually...",
+        slug: "portfolio",
+        markdown_path: "portfolio.md",
+        published_date: "10/28/24",
+        featured_image: "/assets/images/portfolio.png",
+        featured: true
+    },
+    &BlogPost{ 
         title: "My NixOS Laptop Setup",
         excerpt: "I like customizing things. So when the hard drive on my laptop died, wiping my Windows install that I had been running for 3 years...",
         slug: "nixos-laptop",
@@ -45,7 +54,7 @@ pub static BLOG_POSTS: &'static[&'static BlogPost] = &[
         markdown_path: "colorchords.md",
         published_date: "11/11/23",
         featured_image: "/assets/images/colorchords.png",
-        featured: true
+        featured: false
     },
 ];
 
