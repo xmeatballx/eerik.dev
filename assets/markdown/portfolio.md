@@ -1,6 +1,6 @@
 # I over-engineered my portfolio
 
-A common problem I run into is wanting to test out new technologies but not knowing what to build. The best path forward is usually to start an easy goal and keep things simple. While working with new tech hardly ever feels “simple”, the point is to work through some initial hurdles and end up with a working product. 
+A common problem I run into is wanting to test out new technologies but not knowing what to build. The best path forward is usually to start with an easy goal and keep things simple. While working with new tech hardly ever feels “simple”, the point is to work through some initial hurdles and end up with a working product. 
 
 Portfolio sites are low stakes. You get to be your own boss, set your own deadlines, and be your most invested user. They’re usually also not that complex. They should be able to show some static content, and maybe support form submissions, so as long as those work the implementation is completely up to you.
 
