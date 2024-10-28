@@ -7,7 +7,7 @@ Portfolio sites are low stakes. You get to be your own boss, set your own deadli
 ## Special cases
 
 1. If you don’t already have a live portfolio then use what you know. Deploying your portfolio site for the first time is just one step down an endless road of iterations. Technology and design trends are always changing and so will your tastes. Just make sure you have something live before getting too experimental with it.
-2. If you’re shooting for super creative UI/UX roles, want to win awards and gain clout, then maybe show off a little bit. There are cases for having impressive and ultra interactive portfolio sites, but for a majority of developers it’s probably not necessary and not worth the potential bugs and UX hindrances if done sub-optimally.
+2. If you’re shooting for super creative UI/UX roles, or want to win awards and gain clout, then maybe show off a little bit. There are cases for having impressive and ultra interactive portfolio sites, but for a majority of developers it’s probably not necessary and not worth the potential bugs and UX hindrances if done sub-optimally.
 
 ## Invest your effort wisely
 
