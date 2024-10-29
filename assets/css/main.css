@@ -2725,12 +2725,12 @@ html {
   height: 100%;
 }
 
-.h-fullscreenMinusHeader {
-  height: calc(100vh -  80px - 40px);
-}
-
 .h-screen {
   height: 100vh;
+}
+
+.h-maincontent {
+  height: calc(100vh - 80px - 40px);
 }
 
 .max-h-96 {
@@ -3629,10 +3629,6 @@ code {
 
   .md\:h-full {
     height: 100%;
-  }
-
-  .md\:h-fullscreenMinusHeader {
-    height: calc(100vh -  80px - 40px);
   }
 
   .md\:w-1\/2 {

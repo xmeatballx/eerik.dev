@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "npx tailwindcss -i ./templates/input.css -o ./assets/css/main.css --watch && cargo watch -x run",
+    "dev": "npx tailwindcss -i ./templates/input.css -o ./assets/css/main.css -c ./tailwind.config.js --watch",
     "prod": "npx tailwindcss -i ./templates/input.css -o ./assets/css/main.css --minify",
     "start": "npx tailwindcss -i ./templates/input.css -o ./assets/css/main.css --minify && cargo run"
   },

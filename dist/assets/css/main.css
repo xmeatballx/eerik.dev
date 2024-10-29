@@ -2721,12 +2721,12 @@ html {
   height: 12px;
 }
 
-.h-full {
-  height: 100%;
+.h-content {
+  height: calc(100vh - 80px - 40px);
 }
 
-.h-fullscreenMinusHeader {
-  height: calc(100vh -  80px - 40px);
+.h-full {
+  height: 100%;
 }
 
 .h-screen {
@@ -3627,12 +3627,12 @@ code {
     height: 24px;
   }
 
-  .md\:h-full {
-    height: 100%;
+  .md\:h-content {
+    height: calc(100vh - 80px - 40px);
   }
 
-  .md\:h-fullscreenMinusHeader {
-    height: calc(100vh -  80px - 40px);
+  .md\:h-full {
+    height: 100%;
   }
 
   .md\:w-1\/2 {

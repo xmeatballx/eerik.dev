@@ -1,17 +1,17 @@
 # I over-engineered my portfolio
 
-A common problem I run into is wanting to test out new technologies but not knowing what to build. The best path forward is usually to start an easy goal and keep things simple. While working with new tech hardly ever feels “simple”, the point is to work through some initial hurdles and end up with a working product. 
+A common problem I run into is wanting to test out new technologies but not knowing what to build. The best path forward is usually to start with an easy goal and keep things simple. While working with new tech hardly ever feels “simple”, the point is to work through some initial hurdles and end up with a working product. 
 
 Portfolio sites are low stakes. You get to be your own boss, set your own deadlines, and be your most invested user. They’re usually also not that complex. They should be able to show some static content, and maybe support form submissions, so as long as those work the implementation is completely up to you.
 
 ## Special cases
 
 1. If you don’t already have a live portfolio then use what you know. Deploying your portfolio site for the first time is just one step down an endless road of iterations. Technology and design trends are always changing and so will your tastes. Just make sure you have something live before getting too experimental with it.
-2. If you’re shooting for super creative UI/UX roles, want to win awards and gain clout, then maybe show off a little bit. There are cases for having impressive and ultra interactive portfolio sites, but for a majority of developers it’s probably not necessary and not worth the potential bugs and UX hindrances if done sub-optimally.
+2. If you’re shooting for super creative UI/UX roles, or want to win awards and gain clout, then maybe show off a little bit. There are cases for having impressive and ultra interactive portfolio sites, but for a majority of developers it’s probably not necessary and not worth the potential bugs and UX hindrances if done sub-optimally.
 
 ## Invest your effort wisely
 
-In past iterations of my portfolio, I was very invested in creating an impressive UI with webGL, 3D, and fancy animations. While slightly over-engineered this was more out of the pursuit of over-selling myself as a “front end guru” in the most generic way possible. I didn’t need scroll hijacking, view transitions, or particle systems to communicate my experience and I felt like the in-your-face vanity of it all didn’t reflect my personal tastes.
+In past iterations of my portfolio, I was very invested in creating an impressive UI with webGL, 3D, and fancy animations. While slightly over-engineered this was more out of the pursuit of over-selling myself as a “front end guru” in a very generic way. I didn’t need scroll hijacking, view transitions, or particle systems to communicate my experience and I felt like the in-your-face vanity of it all didn’t reflect my personal tastes.
 
 I would liken it to a resume. You can create a verbose 4 page resume that lists every single skill you used on every project and positions you as the best thing to ever happen to software development, but compared to hundreds of identical resumes all you’re doing is giving the recruiter a headache. The resumes that stick out are succinct and list business impact in a pleasing and accessible way.
 
