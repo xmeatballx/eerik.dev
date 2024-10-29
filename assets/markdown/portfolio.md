@@ -11,7 +11,7 @@ Portfolio sites are low stakes. You get to be your own boss, set your own deadli
 
 ## Invest your effort wisely
 
-In past iterations of my portfolio, I was very invested in creating an impressive UI with webGL, 3D, and fancy animations. While slightly over-engineered this was more out of the pursuit of over-selling myself as a “front end guru” in the most generic way possible. I didn’t need scroll hijacking, view transitions, or particle systems to communicate my experience and I felt like the in-your-face vanity of it all didn’t reflect my personal tastes.
+In past iterations of my portfolio, I was very invested in creating an impressive UI with webGL, 3D, and fancy animations. While slightly over-engineered this was more out of the pursuit of over-selling myself as a “front end guru” in a very generic way. I didn’t need scroll hijacking, view transitions, or particle systems to communicate my experience and I felt like the in-your-face vanity of it all didn’t reflect my personal tastes.
 
 I would liken it to a resume. You can create a verbose 4 page resume that lists every single skill you used on every project and positions you as the best thing to ever happen to software development, but compared to hundreds of identical resumes all you’re doing is giving the recruiter a headache. The resumes that stick out are succinct and list business impact in a pleasing and accessible way.
 
